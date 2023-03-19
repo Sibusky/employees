@@ -44,27 +44,27 @@ function EmployeesListComponent({
   }, [setBirthdaySortOrder, isAscSortOrderDate, setAscSortOrderDate]);
 
   return (
-    <section className="employees">
+    <section className="employees section">
       <div className="employees__table">
-        <div className="row">
+        <div className="employees__table-row">
           <div
-            className="cell header"
+            className="employees__table-cell employees__table-header"
             onClick={handleClickNameColumn}
           >{`${EMPLOYEE_NAME} ${isAscSortOrderName ? "v" : "^"}`}</div>
 
-          <div className="cell header">{EMPLOYEE_ROLE}</div>
-          <div className="cell header">{EMPLOYEE_PHONE}</div>
-          <div className="cell header" onClick={handleClickBirthdayColumn}>
+          <div className="employees__table-cell employees__table-header">{EMPLOYEE_ROLE}</div>
+          <div className="employees__table-cell employees__table-header">{EMPLOYEE_PHONE}</div>
+          <div className="employees__table-cell employees__table-header" onClick={handleClickBirthdayColumn}>
             {EMPLOYEE_BIRTHDAY}
           </div>
         </div>
         {employees?.map(({ id, name, role, phone, birthday }) => (
           <Link to={`edit/${id}`} key={id}>
-            <div className="row">
-              <div className="cell">{name}</div>
-              <div className="cell">{translateRoles(role)}</div>
-              <div className="cell">{phone}</div>
-              <div className="cell">{birthday}</div>
+            <div className="employees__table-row">
+              <div className="employees__table-cell">{name}</div>
+              <div className="employees__table-cell">{translateRoles(role)}</div>
+              <div className="employees__table-cell">{phone}</div>
+              <div className="employees__table-cell">{birthday}</div>
             </div>
           </Link>
         ))}

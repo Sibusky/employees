@@ -4,10 +4,9 @@ import { Container } from "../components/container";
 import { EmployeesFilter } from "../components/employees-filter";
 import { EmployeesList } from "../components/employees-list";
 import {
-    getFilteredAndSortedEmployessList,
+  getFilteredAndSortedEmployessList,
   selectIsLoadingEmployees,
 } from "../store/selectors";
-
 
 function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
   useEffect(() => {
@@ -25,7 +24,6 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
         <p>... Loading ...</p>
       ) : (
         <EmployeesList employees={employees} />
-        
       )}
     </Container>
   );

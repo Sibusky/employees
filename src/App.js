@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "./pages/layout";
 import { Main } from "./pages/main";
 import { Employee } from "./pages/employee";
-import { Login } from "./pages/login";
 import { PageNotFound } from "./pages/page-not-found";
 
 import "./App.css";
@@ -19,7 +18,6 @@ function App() {
             <Route path="edit/:employeeId" element={<Employee />} />
             <Route path="new" element={<Employee />} />
           </Route>
-          <Route path="login" element={<Login />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

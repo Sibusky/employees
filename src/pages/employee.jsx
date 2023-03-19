@@ -75,7 +75,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
         <form>
             <input placeholder={EMPLOYEE_NAME_PLACEHOLDER} type="text" value={name} onChange={handleChangeName} />
             <select value={role} onChange={handleChangeRole}>
-                {Object.entries(rolesMap).map(([role, roleName]) => <option value={role}>{roleName}</option>)}
+                {Object.entries(rolesMap).map(([role, roleName]) => <option key={role} value={role}>{roleName}</option>)}
             </select>
             <input placeholder={EMPLOYEE_PHONE_PLACEHOLDER} type="tel" value={phone} onChange={handleChangePhone} />
             <input placeholder={EMPLOYEE_DATE_PLACEHOLDER} type="date" value={date} onChange={handleChangeDate} />

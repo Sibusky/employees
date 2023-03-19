@@ -37,7 +37,7 @@ export const employeesReducer = (state = initialState, action) => {
   }
 };
 
-const getUpdatedEmployees = (employees, newEmployeeData) =>
-  employees
-    .filter((employee) => employee.id !== newEmployeeData.id)
-    .concat([newEmployeeData]);
+const getUpdatedEmployees = (employees, newEmployeeData) => [
+  newEmployeeData,
+  ...employees.filter((employee) => employee.id !== newEmployeeData.id),
+];

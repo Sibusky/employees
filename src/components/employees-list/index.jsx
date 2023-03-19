@@ -43,6 +43,8 @@ function EmployeesListComponent({
     setAscSortOrderDate(!isAscSortOrderDate);
   }, [setBirthdaySortOrder, isAscSortOrderDate, setAscSortOrderDate]);
 
+    console.log(employees)
+
   return (
     <section className="employees section">
       <div className="employees__table">

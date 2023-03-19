@@ -3,16 +3,18 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { EDIT_EMPLOYEE } from "../store/actions";
+import { ADD_EMPLOYEE } from "../store/actions";
 
 import { rolesMap } from "../components/employees-filter/constants";
 import { selectEmployeeList } from "../store/selectors";
 
 const EMPLOYEE_CARD_TITLE = "Карточка сотрудника";
+const EMPLOYEE_ADD_CARD = "Форма добавления сотрудника";
 const EMPLOYEE_NAME_PLACEHOLDER = "Введите имя сотрудника";
 const EMPLOYEE_PHONE_PLACEHOLDER = "Введите телефон сотрудника";
 const EMPLOYEE_DATE_PLACEHOLDER = "Введите дату рождения сотрудника";
 const SAVE_CHANGES = "Сохранить изменения";
-const ADD_NEW_USER = "Добавить пользователя";
+const ADD_NEW_USER = "Добавить сотрудника";
 const GO_BACK = "< Назад";
 
 const EmployeeComponent = ({ editEmployee, employees }) => {
@@ -66,7 +68,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
     [setArchive]
   );
 
-  const handleSubmit = useCallback(
+  const handleEditSubmit = useCallback(
     (ev) => {
       ev.preventDefault();
       editEmployee({
@@ -82,9 +84,27 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
     [employee, editEmployee, name, phone, role, birthday, isArchive, navigate]
   );
 
+  const handleAddSubmit = useCallback(
+    (ev) => {
+      ev.preventDefault();
+      editEmployee({
+        id: Date.now(),
+        name,
+        phone,
+        role,
+        birthday,
+        isArchive,
+      });
+      navigate("/");
+    },
+    [editEmployee, name, phone, role, birthday, isArchive, navigate]
+  )
+
+  console.log(employee, "employee");
+
   return (
     <div>
-      <h1>{EMPLOYEE_CARD_TITLE}</h1>
+      <h1>{employee.id ? EMPLOYEE_CARD_TITLE : EMPLOYEE_ADD_CARD}</h1>
       <form>
         <input
           placeholder={EMPLOYEE_NAME_PLACEHOLDER}
@@ -118,9 +138,19 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
         />
         <Link to="/">{GO_BACK}</Link>
 
-        <button type="submit" onClick={handleSubmit}>
-          {employee ? SAVE_CHANGES : ADD_NEW_USER}
-        </button>
+        {employee.id ? (
+          <button onClick={handleEditSubmit}>
+          {SAVE_CHANGES}
+          </button>
+        ) : (
+          <button onClick={handleAddSubmit}>
+            {ADD_NEW_USER}
+          </button>
+        )}
+
+        {/* <button type="submit" onClick={handleSubmit}>
+          {employee.id ? SAVE_CHANGES : ADD_NEW_USER}
+        </button> */}
       </form>
     </div>
   );
@@ -132,6 +162,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   editEmployee: (payload) => dispatch({ type: EDIT_EMPLOYEE, payload }),
+  addEmployee: (payload) => dispatch({ type: ADD_EMPLOYEE, payload }),
 });
 
 export const Employee = connect(

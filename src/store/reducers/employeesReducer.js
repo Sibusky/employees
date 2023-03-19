@@ -1,5 +1,6 @@
 import {
   SET_EMPLOYEES,
+  EDIT_EMPLOYEE,
   FETCH_EMPLOYEES_FINISHED,
   FETCH_EMPLOYEES_STARTED,
 } from "../actions";
@@ -16,6 +17,11 @@ export const employeesReducer = (state = initialState, action) => {
         ...state,
         employees: action.payload,
       };
+    case EDIT_EMPLOYEE:
+      return {
+        ...state,
+        employees: getUpdatedEmployees(state.employees, action.payload),
+      };
     case FETCH_EMPLOYEES_STARTED:
       return {
         ...state,
@@ -30,3 +36,8 @@ export const employeesReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+const getUpdatedEmployees = (employees, newEmployeeData) =>
+  employees
+    .filter((employee) => employee.id !== newEmployeeData.id)
+    .concat([newEmployeeData]);

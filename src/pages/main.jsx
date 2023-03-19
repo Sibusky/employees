@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { Container } from "../components/container";
 import { EmployeesFilter } from "../components/employees-filter";
 import { EmployeesList } from "../components/employees-list";
@@ -9,7 +8,6 @@ import {
   selectIsLoadingEmployees,
 } from "../store/selectors";
 
-const ADD_EMPLOYEE = "Добавить сотрудника";
 
 function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
   useEffect(() => {
@@ -27,8 +25,8 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
         <p>... Loading ...</p>
       ) : (
         <EmployeesList employees={employees} />
+        
       )}
-      <Link to="/new">{ADD_EMPLOYEE}</Link>
     </Container>
   );
 }

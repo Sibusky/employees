@@ -16,6 +16,7 @@ import {
   EMPLOYEE_ROLE,
   EMPLOYEE_PHONE,
   EMPLOYEE_BIRTHDAY,
+  ADD_EMPLOYEE
 } from "./constants";
 import "./styles.css";
 
@@ -68,6 +69,8 @@ function EmployeesListComponent({
           </Link>
         ))}
       </div>
+      <Link to="/new">{ADD_EMPLOYEE}</Link>
+
     </section>
   );
 }

@@ -1,16 +1,7 @@
-const initialState = {
-    employees: []
-}
+import { combineReducers } from 'redux';
 
+import { employeesReducer } from './employeesReducer';
 
-export const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_EMPLOYEES":
-      return {
-        ...state,
-        employees: [...state, action.payload],
-      };
-    default:
-      return state;
-  }
-};
+export const rootReducer = combineReducers({
+    employeesReducer,
+});

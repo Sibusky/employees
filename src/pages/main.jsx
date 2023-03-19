@@ -5,7 +5,7 @@ import { Container } from "../components/container";
 import { EmployeesFilter } from "../components/employees-filter";
 import { EmployeesList } from "../components/employees-list";
 import {
-  selectFilteredEmployeeList,
+    getFilteredAndSortedEmployessList,
   selectIsLoadingEmployees,
 } from "../store/selectors";
 
@@ -34,7 +34,7 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
 }
 
 const mapStateToProps = (state) => ({
-  employees: selectFilteredEmployeeList(state),
+  employees: getFilteredAndSortedEmployessList(state),
   isLoadind: selectIsLoadingEmployees(state),
 });
 

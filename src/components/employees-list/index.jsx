@@ -1,7 +1,15 @@
-import React from "react";
-import { translateRoles } from "../../utils/translateRoles";
+import React, { useCallback, useState } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import "./styles.css";
+import {
+  selectBirthdayOrderSort,
+  selectNameOrderSort,
+} from "../../store/selectors";
+import {
+  SET_BIRTHDAY_SORT_ORDER,
+  SET_NAME_SORT_ORDER,
+} from "../../store/actions";
 
 import {
   EMPLOYEE_NAME,
@@ -9,17 +17,45 @@ import {
   EMPLOYEE_PHONE,
   EMPLOYEE_BIRTHDAY,
 } from "./constants";
-import { Link } from "react-router-dom";
+import "./styles.css";
 
-export function EmployeesList({ employees }) {
+import { translateRoles } from "../../utils/translateRoles";
+
+function EmployeesListComponent({
+  employees,
+  isAscNameOrder,
+  isAscBirthdayOrder,
+  setNameSortOrder,
+  setBirthdaySortOrder,
+}) {
+  const [isAscSortOrderName, setAscSortOrderName] = useState(isAscNameOrder);
+  const [isAscSortOrderDate, setAscSortOrderDate] =
+    useState(isAscBirthdayOrder);
+
+  const handleClickNameColumn = useCallback(() => {
+    setNameSortOrder(!isAscSortOrderName);
+    setAscSortOrderName(!isAscSortOrderName);
+  }, [setNameSortOrder, isAscSortOrderName, setAscSortOrderName]);
+
+  const handleClickBirthdayColumn = useCallback(() => {
+    setBirthdaySortOrder(!isAscSortOrderDate);
+    setAscSortOrderDate(!isAscSortOrderDate);
+  }, [setBirthdaySortOrder, isAscSortOrderDate, setAscSortOrderDate]);
+
   return (
     <section className="employees">
       <div className="employees__table">
         <div className="row">
-          <div className="cell header">{EMPLOYEE_NAME}</div>
+          <div
+            className="cell header"
+            onClick={handleClickNameColumn}
+          >{`${EMPLOYEE_NAME} ${isAscSortOrderName ? "v" : "^"}`}</div>
+
           <div className="cell header">{EMPLOYEE_ROLE}</div>
           <div className="cell header">{EMPLOYEE_PHONE}</div>
-          <div className="cell header">{EMPLOYEE_BIRTHDAY}</div>
+          <div className="cell header" onClick={handleClickBirthdayColumn}>
+            {EMPLOYEE_BIRTHDAY}
+          </div>
         </div>
         {employees?.map(({ id, name, role, phone, birthday }) => (
           <Link to={`edit/${id}`} key={id}>
@@ -35,3 +71,20 @@ export function EmployeesList({ employees }) {
     </section>
   );
 }
+
+const mapStateToProps = (state) => ({
+  isAscNameOrder: selectNameOrderSort(state),
+  isAscBirthdayOrder: selectBirthdayOrderSort(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setBirthdaySortOrder: (payload) =>
+    dispatch({ type: SET_BIRTHDAY_SORT_ORDER, payload }),
+  setNameSortOrder: (payload) =>
+    dispatch({ type: SET_NAME_SORT_ORDER, payload }),
+});
+
+export const EmployeesList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmployeesListComponent);

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Container } from "../components/container";
-import EmployeesFilter from "../components/employees-filter";
-import EmployeesList from "../components/employees-list";
+import { EmployeesFilter } from "../components/employees-filter";
+import { EmployeesList } from "../components/employees-list";
 import {
-  selectEmployeeList,
+  selectFilteredEmployeeList,
   selectIsLoadingEmployees,
 } from "../store/selectors";
 
@@ -34,7 +34,7 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
 }
 
 const mapStateToProps = (state) => ({
-  employees: selectEmployeeList(state),
+  employees: selectFilteredEmployeeList(state),
   isLoadind: selectIsLoadingEmployees(state),
 });
 

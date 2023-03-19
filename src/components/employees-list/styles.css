@@ -1,0 +1,23 @@
+.employees__table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.cell  {
+    width: 30%;
+    border-right: 1px solid #eaeaea;
+    padding: 8px 12px;
+}
+
+.header {
+    border: 0 1px solid #eaeaea;
+}

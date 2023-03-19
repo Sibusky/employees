@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
-import { connect, } from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Container } from "../components/container";
 import EmployeesFilter from "../components/employees-filter";
 import EmployeesList from "../components/employees-list";
-import { selectEmployeeList, selectIsLoadingEmployees } from "../store/selectors";
+import {
+  selectEmployeeList,
+  selectIsLoadingEmployees,
+} from "../store/selectors";
 
-
-const ADD_EMPLOYEE = 'Добавить сотрудника'
+const ADD_EMPLOYEE = "Добавить сотрудника";
 
 function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
   useEffect(() => {
@@ -17,17 +19,15 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
     fetchEmployees();
   }, [employees.length, fetchEmployees]);
 
-  console.log(isLoadind)
-
   return (
     <Container>
       <h1>Список сотрудников</h1>
       <EmployeesFilter />
-      {isLoadind
-      ? <p>... Loading ...</p>
-      :  <EmployeesList employees={employees} />
-      }
-    
+      {isLoadind ? (
+        <p>... Loading ...</p>
+      ) : (
+        <EmployeesList employees={employees} />
+      )}
       <Link to="/new">{ADD_EMPLOYEE}</Link>
     </Container>
   );
@@ -35,7 +35,7 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
 
 const mapStateToProps = (state) => ({
   employees: selectEmployeeList(state),
-  isLoadind: selectIsLoadingEmployees(state)
+  isLoadind: selectIsLoadingEmployees(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

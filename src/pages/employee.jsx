@@ -29,7 +29,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
   const [phone, setPhone] = useState(employee?.phone ?? "");
   const [role, setRole] = useState(employee?.role ?? "");
   const [birthday, setBirthday] = useState(employee?.birthday ?? "");
-  const [isArchive, setArchive] = useState(employee?.isArchive ?? "");
+  const [isArchive, setArchive] = useState(employee?.isArchive ?? false);
 
   let navigate = useNavigate();
 
@@ -88,7 +88,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
     (ev) => {
       ev.preventDefault();
       editEmployee({
-        id: Date.now(),
+        id: employees.length + 1,
         name,
         phone,
         role,
@@ -97,10 +97,28 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
       });
       navigate("/");
     },
-    [editEmployee, name, phone, role, birthday, isArchive, navigate]
-  )
+    [
+      editEmployee,
+      employees.length,
+      name,
+      phone,
+      role,
+      birthday,
+      isArchive,
+      navigate,
+    ]
+  );
 
-  console.log(employee, "employee");
+  // Дисэйблю кнопку добавления, если нет данных
+  const isAddButtonDisable = Boolean(!name || !role || !phone || !birthday);
+
+  // Дисэйблю кнопку редактирования, если ничего не изменено
+  const isEditButtonDisable = Boolean(
+    name === employee.name &&
+      role === employee.role &&
+      phone === employee.phone &&
+      birthday === employee.birthday
+  );
 
   return (
     <div>
@@ -139,18 +157,20 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
         <Link to="/">{GO_BACK}</Link>
 
         {employee.id ? (
-          <button onClick={handleEditSubmit}>
-          {SAVE_CHANGES}
+          <button
+            onClick={handleEditSubmit}
+            disabled={isEditButtonDisable ? true : false}
+          >
+            {SAVE_CHANGES}
           </button>
         ) : (
-          <button onClick={handleAddSubmit}>
+          <button
+            onClick={handleAddSubmit}
+            disabled={isAddButtonDisable ? true : false}
+          >
             {ADD_NEW_USER}
           </button>
         )}
-
-        {/* <button type="submit" onClick={handleSubmit}>
-          {employee.id ? SAVE_CHANGES : ADD_NEW_USER}
-        </button> */}
       </form>
     </div>
   );

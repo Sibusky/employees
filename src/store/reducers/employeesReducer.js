@@ -2,13 +2,12 @@ const initialState = {
     employees: []
 }
 
-
-export const rootReducer = (state = initialState, action) => {
+export const employeesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_EMPLOYEES":
+    case "SET_EMPLOYEES":
       return {
         ...state,
-        employees: [...state, action.payload],
+        employees: action.payload,
       };
     default:
       return state;

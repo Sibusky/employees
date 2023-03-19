@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import "./styles.css";
 import { rolesMap } from "./constants";
 import { connect } from "react-redux";
+import { CHOOSE_ROLE } from "./constants";
 
 import { SET_ARCHIVED_FILTER, SET_ROLE_FILTER } from "../../store/actions";
 
@@ -23,7 +24,10 @@ function EmployeesFilterComponent({ setRoleFilter, setArchivedFilter }) {
   return (
     <form>
       <input type="checkbox" onChange={handleChangeArchived} />
-      <select onChange={handleChangeRole}>
+      <select defaultValue={CHOOSE_ROLE} onChange={handleChangeRole}>
+        <option value={CHOOSE_ROLE} disabled defaultChecked>
+          {CHOOSE_ROLE}
+        </option>
         {Object.entries(rolesMap).map(([value, name]) => (
           <option value={value} key={value}>
             {name}

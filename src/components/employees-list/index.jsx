@@ -16,7 +16,7 @@ import {
   EMPLOYEE_ROLE,
   EMPLOYEE_PHONE,
   EMPLOYEE_BIRTHDAY,
-  ADD_EMPLOYEE
+  ADD_EMPLOYEE,
 } from "./constants";
 import "./styles.css";
 
@@ -43,8 +43,6 @@ function EmployeesListComponent({
     setAscSortOrderDate(!isAscSortOrderDate);
   }, [setBirthdaySortOrder, isAscSortOrderDate, setAscSortOrderDate]);
 
-    console.log(employees)
-
   return (
     <section className="employees section">
       <div className="employees__table">
@@ -54,9 +52,16 @@ function EmployeesListComponent({
             onClick={handleClickNameColumn}
           >{`${EMPLOYEE_NAME} ${isAscSortOrderName ? "v" : "^"}`}</div>
 
-          <div className="employees__table-cell employees__table-header">{EMPLOYEE_ROLE}</div>
-          <div className="employees__table-cell employees__table-header">{EMPLOYEE_PHONE}</div>
-          <div className="employees__table-cell employees__table-header" onClick={handleClickBirthdayColumn}>
+          <div className="employees__table-cell employees__table-header">
+            {EMPLOYEE_ROLE}
+          </div>
+          <div className="employees__table-cell employees__table-header">
+            {EMPLOYEE_PHONE}
+          </div>
+          <div
+            className="employees__table-cell employees__table-header"
+            onClick={handleClickBirthdayColumn}
+          >
             {EMPLOYEE_BIRTHDAY}
           </div>
         </div>
@@ -64,7 +69,9 @@ function EmployeesListComponent({
           <Link to={`edit/${id}`} key={id}>
             <div className="employees__table-row">
               <div className="employees__table-cell">{name}</div>
-              <div className="employees__table-cell">{translateRoles(role)}</div>
+              <div className="employees__table-cell">
+                {translateRoles(role)}
+              </div>
               <div className="employees__table-cell">{phone}</div>
               <div className="employees__table-cell">{birthday}</div>
             </div>
@@ -72,7 +79,6 @@ function EmployeesListComponent({
         ))}
       </div>
       <Link to="/new">{ADD_EMPLOYEE}</Link>
-
     </section>
   );
 }

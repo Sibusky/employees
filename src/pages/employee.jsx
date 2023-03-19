@@ -8,6 +8,7 @@ import { ADD_EMPLOYEE } from "../store/actions";
 import { rolesMap } from "../components/employees-filter/constants";
 import { selectEmployeeList } from "../store/selectors";
 
+const CHOOSE_ROLE = "Выберите должность";
 const EMPLOYEE_CARD_TITLE = "Карточка сотрудника";
 const EMPLOYEE_ADD_CARD = "Форма добавления сотрудника";
 const EMPLOYEE_NAME_PLACEHOLDER = "Введите имя сотрудника";
@@ -131,6 +132,9 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
           onChange={handleChangeName}
         />
         <select value={role} onChange={handleChangeRole}>
+          <option value="" disabled>
+            {CHOOSE_ROLE}
+          </option>
           {Object.entries(rolesMap).map(([role, roleName]) => (
             <option key={role} value={role}>
               {roleName}

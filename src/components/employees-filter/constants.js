@@ -1,6 +1,8 @@
 export const WAITER = 'Официант';
 export const DRIVER = 'Водитель';
 export const COOK = 'Повар';
+export const CHOOSE_ROLE = 'Выберите должность';
+
 
 export const rolesMap = {
     waiter: WAITER,

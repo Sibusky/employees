@@ -19,7 +19,7 @@ export default function PageNotFoundContent() {
             {GO_BACK}
             </p>
         </button>
-        <Link className="link"><p className="text">На главную</p></Link>
+        <Link className="link" to='/'><p className="text">На главную</p></Link>
       </div>
     </section>
   );

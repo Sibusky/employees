@@ -1,0 +1,33 @@
+.footer {
+  background-color: #ebdcb2;
+  height: 80px;
+}
+
+.footer__container {
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 100%;
+}
+
+.footer__text {
+  width: fit-content !important;
+}
+
+.footer__link {
+  text-decoration: none;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60px;
+}
+
+.footer__github {
+  background-image: url("../../images/github.svg");
+  width: 25px;
+  height: 25px;
+  opacity: 0.7;
+}

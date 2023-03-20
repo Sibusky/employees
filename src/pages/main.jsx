@@ -18,10 +18,22 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
 
   return (
     <Container>
-      <h1>Список сотрудников</h1>
       <EmployeesFilter />
       {isLoadind ? (
-        <p>... Loading ...</p>
+        <div class="lds-default">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       ) : (
         <EmployeesList employees={employees} />
       )}

@@ -16,7 +16,6 @@ import {
   EMPLOYEE_ROLE,
   EMPLOYEE_PHONE,
   EMPLOYEE_BIRTHDAY,
-  ADD_EMPLOYEE,
 } from "./constants";
 import "./styles.css";
 
@@ -45,40 +44,65 @@ function EmployeesListComponent({
 
   return (
     <section className="employees section">
-      <div className="employees__table">
-        <div className="employees__table-row">
-          <div
-            className="employees__table-cell employees__table-header"
-            onClick={handleClickNameColumn}
-          >{`${EMPLOYEE_NAME} ${isAscSortOrderName ? "v" : "^"}`}</div>
-
-          <div className="employees__table-cell employees__table-header">
-            {EMPLOYEE_ROLE}
-          </div>
-          <div className="employees__table-cell employees__table-header">
-            {EMPLOYEE_PHONE}
-          </div>
-          <div
-            className="employees__table-cell employees__table-header"
-            onClick={handleClickBirthdayColumn}
-          >
-            {EMPLOYEE_BIRTHDAY}
-          </div>
-        </div>
-        {employees?.map(({ id, name, role, phone, birthday }) => (
-          <Link to={`edit/${id}`} key={id}>
-            <div className="employees__table-row">
-              <div className="employees__table-cell">{name}</div>
-              <div className="employees__table-cell">
-                {translateRoles(role)}
-              </div>
-              <div className="employees__table-cell">{phone}</div>
-              <div className="employees__table-cell">{birthday}</div>
+      <div className="employees__container container">
+        <div className="employees__table">
+          <div className="employees__table-row">
+            <div
+              className="employees__table-cell employees__table-header link"
+              onClick={handleClickNameColumn}
+            >
+              <p className="employees__table-header text">
+                {`${EMPLOYEE_NAME} ${
+                  isAscSortOrderName === null
+                    ? "▼▲"
+                    : isAscSortOrderName
+                    ? "▼"
+                    : "▲"
+                }`}
+              </p>
             </div>
-          </Link>
-        ))}
+            <div className="employees__table-cell employees__table-header">
+              <p className="employees__table-header text">{EMPLOYEE_ROLE}</p>
+            </div>
+            <div className="employees__table-cell employees__table-header">
+              <p className="employees__table-header text">{EMPLOYEE_PHONE}</p>
+            </div>
+            <div
+              className="employees__table-cell employees__table-header link"
+              onClick={handleClickBirthdayColumn}
+            >
+              <p className="employees__table-header text">
+                {`${EMPLOYEE_BIRTHDAY} ${
+                  isAscSortOrderDate === null
+                    ? "▼▲"
+                    : isAscSortOrderDate
+                    ? "▼"
+                    : "▲"
+                }`}
+              </p>
+            </div>
+          </div>
+          {employees?.map(({ id, name, role, phone, birthday }) => (
+            <Link className="employees__link link" to={`edit/${id}`} key={id}>
+              <div className="employees__table-row">
+                <div className="employees__table-cell">
+                  <p className="text">{name}</p>
+                </div>
+                <div className="employees__table-cell">
+                  <p className="text"> {translateRoles(role)}</p>
+                </div>
+                <div className="employees__table-cell">
+                  <p className="text">{phone}</p>
+                </div>
+                <div className="employees__table-cell">
+                  <p className="text">{birthday}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
       </div>
-      <Link to="/new">{ADD_EMPLOYEE}</Link>
     </section>
   );
 }

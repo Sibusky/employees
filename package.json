@@ -2,7 +2,8 @@
   "name": "employees",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "main": "index.js",
+  "homepage": "https://sibusky.github.io/employees/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
@@ -43,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

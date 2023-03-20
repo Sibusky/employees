@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles.css";
 import { GO_BACK } from "./constants";
 
@@ -19,6 +19,7 @@ export default function PageNotFoundContent() {
             {GO_BACK}
             </p>
         </button>
+        <Link className="link"><p className="text">На главную</p></Link>
       </div>
     </section>
   );

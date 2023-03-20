@@ -20,7 +20,7 @@ function MainComponent({ employees = [], isLoadind, fetchEmployees }) {
     <Container>
       <EmployeesFilter />
       {isLoadind ? (
-        <div class="lds-default">
+        <div className="lds-default">
           <div></div>
           <div></div>
           <div></div>

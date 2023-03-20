@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useCallback } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { InputMask } from 'primereact/inputmask';
 
 import { EDIT_EMPLOYEE } from "../store/actions";
 import { ADD_EMPLOYEE } from "../store/actions";
@@ -125,7 +126,8 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
     name === employee.name &&
       role === employee.role &&
       phone === employee.phone &&
-      birthday === employee.birthday
+      birthday === employee.birthday &&
+      isArchive === employee.isArchive
   );
 
   return (
@@ -184,13 +186,14 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
               >
                 {EMPLOYEE_PHONE}
               </label>
-              <input
+              <InputMask
                 className="employee__form-input form-input text"
                 placeholder={EMPLOYEE_PHONE_PLACEHOLDER}
                 type="tel"
                 id="phone"
                 value={phone}
                 onChange={handleChangePhone}
+                mask='+7 (999) 999-9999'
               />
             </div>
 
@@ -201,13 +204,14 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
               >
                 {EMPLOYEE_BIRTHDAY}
               </label>
-              <input
+              <InputMask
                 className="employee__form-input form-input text"
                 placeholder={EMPLOYEE_DATE_PLACEHOLDER}
                 type="text"
                 id="birthday"
                 value={birthday}
                 onChange={handleChangeDate}
+                mask="99.99.9999"
               />
             </div>
 

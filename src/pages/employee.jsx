@@ -130,6 +130,8 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
       isArchive === employee.isArchive
   );
 
+  console.log(isAddButtonDisable)
+
   return (
     <main className="main">
       <section className="employee section">
@@ -163,7 +165,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
                 {EMPLOYEE_ROLE}
               </label>
               <select
-                className="employee__form-input form-input text"
+                className="employee__form-input form-input form-input-select text"
                 value={role}
                 onChange={handleChangeRole}
                 id="role"

@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useCallback } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { InputMask } from 'primereact/inputmask';
+import { InputMask } from "primereact/inputmask";
 
 import { EDIT_EMPLOYEE } from "../store/actions";
 import { ADD_EMPLOYEE } from "../store/actions";
@@ -13,7 +13,7 @@ import {
   EMPLOYEE_NAME,
   EMPLOYEE_PHONE,
   EMPLOYEE_ROLE,
-  EMPLOYEE_ISARCHIVED
+  EMPLOYEE_ISARCHIVED,
 } from "../components/employees-list/constants";
 
 const CHOOSE_ROLE = "Выберите должность";
@@ -130,8 +130,6 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
       isArchive === employee.isArchive
   );
 
-  console.log(isAddButtonDisable)
-
   return (
     <main className="main">
       <section className="employee section">
@@ -195,7 +193,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
                 id="phone"
                 value={phone}
                 onChange={handleChangePhone}
-                mask='+7 (999) 999-9999'
+                mask="+7 (999) 999-9999"
               />
             </div>
 
@@ -234,20 +232,24 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
             </div>
 
             {employee.id ? (
-              <button className={isEditButtonDisable ? "button button_disabled" : 'button'}
+              <button
+                className={
+                  isEditButtonDisable ? "button button_disabled" : "button"
+                }
                 onClick={handleEditSubmit}
                 disabled={isEditButtonDisable ? true : false}
               >
-                <p className="button-text text">  {SAVE_CHANGES}</p>
-              
+                <p className="button-text text"> {SAVE_CHANGES}</p>
               </button>
             ) : (
-              <button className={isAddButtonDisable ? "button button_disabled" : 'button'}
+              <button
+                className={
+                  isAddButtonDisable ? "button button_disabled" : "button"
+                }
                 onClick={handleAddSubmit}
                 disabled={isAddButtonDisable ? true : false}
               >
                 <p className="button-text text">{ADD_NEW_USER}</p>
-                
               </button>
             )}
 

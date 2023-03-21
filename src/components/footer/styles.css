@@ -3,11 +3,18 @@
   height: 80px;
 }
 
+@media screen and (max-width: 500px) {
+  .footer {
+    height: 40px;
+  }
+}
+
 .footer__container {
   flex-direction: row !important;
   justify-content: space-between !important;
   align-items: center !important;
   height: 100%;
+  padding: 0 !important;
 }
 
 .footer__text {

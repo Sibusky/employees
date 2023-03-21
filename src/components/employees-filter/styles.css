@@ -6,12 +6,12 @@
 }
 
 @media screen and (max-width: 450px) {
-    .filter__filter-and-button {
-      flex-direction: column-reverse;
-      align-items: center;
-        height: 130px;
-    }
+  .filter__filter-and-button {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 120px;
   }
+}
 
 .filter__add-employee-text {
   color: #eaeaea !important;
@@ -38,6 +38,12 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
+}
+
+@media screen and (max-width: 450px) {
+  .filter__handlers {
+    height: 50px;
+  }
 }
 
 .filter__handlers-text {

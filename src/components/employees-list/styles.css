@@ -1,18 +1,5 @@
 .employees {
-  overflow: scroll;
-  height: 63vh;
-}
-
-@media screen and (max-width: 500px) {
-  .employees {
-    height: 58vh;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .employees {
-    height: 54vh;
-  }
+  overflow-x: scroll;
 }
 
 .employees::-webkit-scrollbar {
@@ -70,4 +57,11 @@
 
 .employees__table-header {
   text-align: center;
+}
+
+.employees__table-text {
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

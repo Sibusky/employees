@@ -22,7 +22,13 @@
 
 main {
   height: calc(100vh - 80px - 80px);
-  overflow: auto;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 700px) {
+  main {
+    height: calc(100vh - 40px - 40px);
+  }
 }
 
 .main::-webkit-scrollbar {
@@ -80,6 +86,7 @@ main {
 
 .button_disabled {
   background-color: #5a5a5a;
+  cursor: not-allowed;
 }
 
 .button-text {
@@ -95,6 +102,13 @@ main {
 
 .button:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 650px) {
+  .button {
+    width: 150px;
+    height: 30px;
+  }
 }
 
 .section {
@@ -131,6 +145,7 @@ main {
   line-height: 3.5rem;
   text-rendering: optimizeLegibility;
   text-decoration: none;
+  text-align: center;
   color: #662e1c;
   letter-spacing: 1.5px;
   width: fit-content;
@@ -145,7 +160,7 @@ main {
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 450px) {
   .section__title {
     font-size: 1.8rem;
     line-height: 2rem;
@@ -272,6 +287,12 @@ main {
   width: 500px;
 }
 
+@media screen and (max-width: 550px) {
+  .employee__form {
+    width: 100%;
+  }
+}
+
 .form-input-container {
   display: flex;
   justify-content: flex-start;
@@ -280,7 +301,7 @@ main {
 }
 
 .form-input-container:last-of-type {
- margin: 0 0 60px 0;
+  margin: 0 0 60px 0;
 }
 
 .form-label {
@@ -292,4 +313,9 @@ main {
   width: 300px;
   height: 25px;
   text-align: right;
+  padding: 5px 10px;
+}
+
+.form-input-select {
+  height: 40px;
 }

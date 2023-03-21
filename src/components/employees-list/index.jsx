@@ -86,16 +86,16 @@ function EmployeesListComponent({
             <Link className="employees__link link" to={`edit/${id}`} key={id}>
               <div className="employees__table-row">
                 <div className="employees__table-cell">
-                  <p className="text">{name}</p>
+                  <p className="employees__table-text text">{name}</p>
                 </div>
                 <div className="employees__table-cell">
-                  <p className="text"> {translateRoles(role)}</p>
+                  <p className="employees__table-text text"> {translateRoles(role)}</p>
                 </div>
                 <div className="employees__table-cell">
-                  <p className="text">{phone}</p>
+                  <p className="employees__table-text text">{phone}</p>
                 </div>
                 <div className="employees__table-cell">
-                  <p className="text">{birthday}</p>
+                  <p className="employees__table-text text">{birthday}</p>
                 </div>
               </div>
             </Link>

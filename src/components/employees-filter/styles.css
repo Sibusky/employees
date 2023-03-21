@@ -1,8 +1,16 @@
 .filter__filter-and-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+  .filter__filter-and-button {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 120px;
+  }
 }
 
 .filter__add-employee-text {
@@ -12,28 +20,46 @@
 }
 
 .filter__checkbox-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
+
+@media screen and (max-width: 650px) {
+  .filter__checkbox-container {
+    width: 80px;
+  }
 }
 
 .filter__handlers {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+@media screen and (max-width: 450px) {
+  .filter__handlers {
+    height: 50px;
+  }
 }
 
 .filter__handlers-text {
-    letter-spacing: 3px !important;
-    width: fit-content !important;
+  letter-spacing: 3px !important;
+  width: fit-content !important;
 }
 
 .filter__form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+}
+
+@media screen and (max-width: 650px) {
+  .filter__form {
+    width: 250px;
+  }
 }

@@ -9,6 +9,12 @@
   }
 }
 
+@media (pointer: coarse) {
+  .footer {
+    height: 40px;
+  }
+}
+
 .footer__container {
   flex-direction: row !important;
   justify-content: space-between !important;

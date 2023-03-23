@@ -20,8 +20,8 @@ const CHOOSE_ROLE = "Выберите должность";
 const EMPLOYEE_CARD_TITLE = "Карточка сотрудника";
 const EMPLOYEE_ADD_CARD = "Добавить сотрудника";
 const EMPLOYEE_NAME_PLACEHOLDER = "Введите имя сотрудника";
-const EMPLOYEE_PHONE_PLACEHOLDER = "Введите телефон сотрудника";
-const EMPLOYEE_DATE_PLACEHOLDER = "Введите дату рождения сотрудника";
+// const EMPLOYEE_PHONE_PLACEHOLDER = "Введите телефон сотрудника";
+// const EMPLOYEE_DATE_PLACEHOLDER = "Введите дату рождения сотрудника";
 const SAVE_CHANGES = "Сохранить изменения";
 const ADD_NEW_USER = "Добавить сотрудника";
 const GO_BACK = "Назад";
@@ -188,7 +188,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
               </label>
               <InputMask
                 className="employee__form-input form-input text"
-                placeholder={EMPLOYEE_PHONE_PLACEHOLDER}
+                // placeholder={EMPLOYEE_PHONE_PLACEHOLDER}
                 type="tel"
                 id="phone"
                 value={phone}
@@ -206,7 +206,7 @@ const EmployeeComponent = ({ editEmployee, employees }) => {
               </label>
               <InputMask
                 className="employee__form-input form-input text"
-                placeholder={EMPLOYEE_DATE_PLACEHOLDER}
+                // placeholder={EMPLOYEE_DATE_PLACEHOLDER}
                 type="text"
                 id="birthday"
                 value={birthday}

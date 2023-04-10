@@ -1,6 +1,6 @@
 # Employees App
 
-App allows to control a company employees list. Features: list sorting, adding or editing employee data. Layout is responsive.
+App allows to control a company employees list. Features: list sorting and filtering, adding or editing employee data. Layout is responsive.
 
 Stack:
 - HTML, CSS, JavaScript,
@@ -18,7 +18,7 @@ If somehow link doesn’t work:
 
 # Employees App
 
-Приложение для управления списком сотрудников компании. На главной странице можно сортировать список по имени и дате рождения. При клике на сотрудника можно отредактировать его данные. Также есть кнопка для добавления нового сотрудника. Вёрска отзывчивая.
+Приложение для управления списком сотрудников компании. На главной странице можно сортировать список по имени и дате рождения и фильтровать по должности и статусу. При клике на сотрудника можно отредактировать его данные. Также есть кнопка для добавления нового сотрудника. Приложение поддерживает роутинг. Вёрска отзывчивая.
 
 Стек технологий:
 - HTML, CSS, JavaScript,
